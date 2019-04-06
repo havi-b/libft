@@ -1,0 +1,5 @@
+#Ignore .DS files
+.DS*
+
+#IGNORE SWAP FILES
+._*

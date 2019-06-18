@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intlen.c                                        :+:      :+:    :+:   */
+/*   ft_fnputs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havi <havi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/15 03:52:04 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/05/20 16:58:07 by hbhuiyan         ###   ########.fr       */
+/*   Created: 2019/06/18 15:58:42 by havi              #+#    #+#             */
+/*   Updated: 2019/06/18 16:16:47 by havi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_intlen(intmax_t n)
-{
-	size_t	c;
+ int	ft_fnputs(const char * __restrict s, FILE * __restrict stream, int n)
+ {
+	 int i;
 
-	c = 0;
-	if (n == -2147483648)
-		return (11);
-	if (n <= 0)
-	{
-		c = 1;
-		n *= -1;
-	}
-	while (n > 0)
-	{
-		n /= 10;
-		c++;
-	}
-	return (c);
-}
+	 i = 0;
+	 while (i < n)
+	 {
+		 fputc(s[i], stream);
+		 i++;
+	 }
+	 return (n);
+ }

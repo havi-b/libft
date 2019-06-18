@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbhuiyan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: havi <havi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 15:29:18 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2018/10/29 01:23:30 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/06/18 16:18:40 by havi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <stdio.h>
 # define BUFF_SIZE 42
 
 typedef struct		s_list
@@ -47,7 +48,6 @@ char				*ft_strnstr(const char *s1, const char *s2, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strmerge(char *s1, char *s2);
-int					ft_atoi(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -73,9 +73,14 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 size_t				ft_wrdcnt(const char *s, char c);
-char				*ft_itoa(int n);
-size_t				ft_intlen(int n);
+int					ft_atoi(const char *str);
+char				*ft_itoa(intmax_t n);
+char    			*ft_itoa_base(uintmax_t n, int base, int upper);
+size_t				ft_intlen(intmax_t n);
+size_t    			ft_uintlen(uintmax_t n, int base);
 void				ft_putstr(char const *s);
+void 				ft_putnstr(char *s, size_t n);
+void				ft_putnstr_fd(char *s, size_t n, int fd);
 void				ft_putchar(char c);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
@@ -92,5 +97,9 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 size_t				ft_lstlen(t_list *lst);
 int					get_next_line(const int fd, char **line);
 int					ft_sqrt(int x);
+char        		*ft_ftoa(long double n, size_t prcsn);
+char		        *add_dot(char *num, size_t prcsn);
+int					ft_fnputs(const char * __restrict s, \
+					FILE * __restrict stream, int n);
 
 #endif

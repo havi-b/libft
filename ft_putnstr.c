@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havi <havi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/15 03:52:04 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/05/20 16:58:07 by hbhuiyan         ###   ########.fr       */
+/*   Created: 2019/06/18 15:56:09 by havi              #+#    #+#             */
+/*   Updated: 2019/06/18 16:03:38 by havi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_intlen(intmax_t n)
+void	ft_putnstr(char *s, size_t n)
 {
-	size_t	c;
+	size_t i;
 
-	c = 0;
-	if (n == -2147483648)
-		return (11);
-	if (n <= 0)
+	i = 0;
+	while (i < n)
 	{
-		c = 1;
-		n *= -1;
+		write(1, &s[i], 1);
+		i++;
 	}
-	while (n > 0)
-	{
-		n /= 10;
-		c++;
-	}
-	return (c);
 }

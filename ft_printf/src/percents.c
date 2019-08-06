@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmerge.c                                      :+:      :+:    :+:   */
+/*   percents.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/26 17:55:41 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/06/18 19:59:55 by hbhuiyan         ###   ########.fr       */
+/*   Created: 2019/06/14 20:42:21 by hbhuiyan          #+#    #+#             */
+/*   Updated: 2019/06/23 10:59:24 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_printf.h"
 
-char	*ft_strmerge(char *a, char *b)
+void		make_percent_str(t_id *buff)
 {
-	char	*ret;
-
-	ret = ft_strjoin(a, b);
-	ft_strdel(&a);
-	ft_strdel(&b);
-	return (ret);
+	buff->s = ft_strjoin("%\0", "");
+	init_int_format(buff);
 }

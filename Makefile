@@ -6,42 +6,33 @@
 #    By: havi <havi@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/28 23:38:04 by hbhuiyan          #+#    #+#              #
-#    Updated: 2019/06/18 16:18:38 by havi             ###   ########.fr        #
+#    Updated: 2019/07/12 12:22:34 by havi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC = 	./ft_memset.c ./ft_bzero.c ./ft_memcpy.c ./ft_memccpy.c ./ft_memmove.c \
-		./ft_memchr.c ./ft_memcmp.c ./ft_strlen.c ./ft_strdup.c ./ft_strcpy.c \
-		./ft_strncpy.c ./ft_strcat.c ./ft_strncat.c ./ft_strlcat.c ./ft_strchr.c \
-		./ft_strrchr.c ./ft_strstr.c ./ft_strnstr.c ./ft_strcmp.c ./ft_strncmp.c \
-		./ft_atoi.c ./ft_isalpha.c ./ft_isdigit.c ./ft_isalnum.c ./ft_isascii.c \
-		./ft_isprint.c ./ft_toupper.c ./ft_tolower.c ./ft_memalloc.c ./ft_memdel.c \
-		./ft_strnew.c ./ft_strdel.c ./ft_strclr.c ./ft_striter.c ./ft_striteri.c \
-		./ft_strmap.c ./ft_strmapi.c ./ft_strmerge.c ./ft_strequ.c ./ft_strnequ.c ./ft_strsub.c \
-		./ft_strjoin.c ./ft_strtrim.c ./ft_strsplit.c ./ft_itoa.c ./ft_itoa_base.c ./ft_putchar.c \
-		./ft_putstr.c ./ft_putendl.c ./ft_putnbr.c ./ft_putchar_fd.c ./ft_putstr_fd.c \
-		./ft_putnstr.c ./ft_putnstr_fd.c ./ft_putendl_fd.c ./ft_putnbr_fd.c \
-		./ft_isspace.c ./ft_iswspace.c ./ft_wrdcnt.c ./ft_intlen.c ./ft_lstlen.c \
-		./ft_lstnew.c ./ft_lstdelone.c ./ft_lstdel.c ./ft_lstadd.c ./ft_lstiter.c \
-		./ft_lstmap.c ./ft_sqrt.c ./ft_uintlen.c ./ft_ftoa.c ./ft_fnputs.c
+SRC = 	./*.c ./ft_printf/src/*.c
 
-INCLUDES = libft.h
+INCLUDES = ./libft.h ./ft_printf/includes/ft_printf.h
 
 OBJECTS = *.o
 
-$(NAME):
-	gcc -Wall -Wextra -Werror -c $(SRC) -I $(INCLUDES)
-	ar rc $(NAME) $(OBJECTS)
-	ranlib $(NAME)
+FLAGS = -Wall -Wextra -Werror
+
+$(NAME): $(SRC)/%.o
+	@gcc $(FLAGS) -c $(SRC) -I $(INCLUDES)
+	@ar rc $(NAME) $(OBJECTS)
+	@ranlib $(NAME)
 
 all: $(NAME)
 
-clean:
-	rm -fr $(OBJECTS)
+clean :
+	@rm -fr $(OBJ)
+	@find . -type f -name '*.o' -delete
 
-fclean: clean
-	rm -fr $(NAME)
-
-re: fclean all
+fclean : clean
+	@rm -fr $(NAME)
+re :
+	@make fclean
+	@make all

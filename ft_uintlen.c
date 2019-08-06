@@ -5,22 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/26 17:45:36 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/05/26 17:48:29 by hbhuiyan         ###   ########.fr       */
+/*   Created: 2019/08/05 17:08:12 by hbhuiyan          #+#    #+#             */
+/*   Updated: 2019/08/05 18:48:03 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_uintlen(uintmax_t n, int base)
+size_t		ft_uintlen(uintmax_t n)
 {
-    int c;
+	size_t	c;
 
-    c = 0;
-    while (n > 0)
-    {
-        n /= base;
-        c++;
-    }
-    return c;
+	c = 0;
+	while (n > 0)
+	{
+		n /= 10;
+		c++;
+	}
+	return (c);
 }

@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmerge.c                                      :+:      :+:    :+:   */
+/*   ft_uintlen_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/26 17:55:41 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/06/18 19:59:55 by hbhuiyan         ###   ########.fr       */
+/*   Created: 2019/05/26 17:45:36 by hbhuiyan          #+#    #+#             */
+/*   Updated: 2019/08/05 18:21:21 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmerge(char *a, char *b)
+size_t		ft_uintlen_base(uintmax_t n, int base)
 {
-	char	*ret;
+	int		c;
 
-	ret = ft_strjoin(a, b);
-	ft_strdel(&a);
-	ft_strdel(&b);
-	return (ret);
+	c = 0;
+	while (n > 0)
+	{
+		n /= base;
+		c++;
+	}
+	return (c);
 }

@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmerge.c                                      :+:      :+:    :+:   */
+/*   validate_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/26 17:55:41 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/06/18 19:59:55 by hbhuiyan         ###   ########.fr       */
+/*   Created: 2019/06/18 13:06:39 by havi              #+#    #+#             */
+/*   Updated: 2019/06/23 10:59:24 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_printf.h"
 
-char	*ft_strmerge(char *a, char *b)
+int		isflt_id(char c)
 {
-	char	*ret;
+	return (c == 'f' || c == 'F');
+}
 
-	ret = ft_strjoin(a, b);
-	ft_strdel(&a);
-	ft_strdel(&b);
-	return (ret);
+int		ispntr_id(char c)
+{
+	return (c == 'p' || c == 'P');
+}
+
+int		isflag(char c)
+{
+	return (c == '-' || c == '0' || c == '+' || c == ' ' || c == '#');
+}
+
+int		islen(char c)
+{
+	return (c == 'l' || c == 'h' || c == 'L' || c == 'j' || c == 'z');
+}
+
+int		is_plusminus(char c)
+{
+	return (c == '+' || c == '-');
 }

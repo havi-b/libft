@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmerge.c                                      :+:      :+:    :+:   */
+/*   n.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/26 17:55:41 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/06/18 19:59:55 by hbhuiyan         ###   ########.fr       */
+/*   Created: 2019/06/18 20:30:07 by hbhuiyan          #+#    #+#             */
+/*   Updated: 2019/06/23 10:59:24 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_printf.h"
 
-char	*ft_strmerge(char *a, char *b)
+void		make_n(t_id *buff)
 {
-	char	*ret;
+	t_id	*temp;
+	int		*ptr;
+	int		n;
 
-	ret = ft_strjoin(a, b);
-	ft_strdel(&a);
-	ft_strdel(&b);
-	return (ret);
+	ptr = (int *)buff->data.data;
+	temp = buff;
+	n = 0;
+	while (temp)
+	{
+		n += temp->n;
+		temp = temp->prev;
+	}
+	*ptr = n;
 }

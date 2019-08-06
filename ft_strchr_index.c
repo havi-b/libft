@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmerge.c                                      :+:      :+:    :+:   */
+/*   ft_strchr_index.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/26 17:55:41 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/06/18 19:59:55 by hbhuiyan         ###   ########.fr       */
+/*   Created: 2019/07/10 02:14:00 by hbhuiyan          #+#    #+#             */
+/*   Updated: 2019/07/10 02:24:22 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./libft.h"
 
-char	*ft_strmerge(char *a, char *b)
+int			ft_strchr_index(char *s, int c)
 {
-	char	*ret;
+	int		i;
 
-	ret = ft_strjoin(a, b);
-	ft_strdel(&a);
-	ft_strdel(&b);
-	return (ret);
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			return (i);
+		++i;
+	}
+	return (-1);
 }

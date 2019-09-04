@@ -6,7 +6,7 @@
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 13:07:35 by havi              #+#    #+#             */
-/*   Updated: 2019/07/12 16:24:54 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/05 18:45:34 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			isuhash_id(char c)
 
 int			is_valid_hash(t_id *buff)
 {
-	return ((buff->flags && buff->flags->hash && isuhash_id(buff->id)) || \
+	return ((buff->flags & HASH && isuhash_id(buff->id)) || \
 			ispntr_id(buff->id));
 }
 

@@ -6,7 +6,7 @@
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 17:29:09 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/06/25 14:17:16 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/05 06:21:03 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void		init_flt_format(t_id *buff)
 	}
 	else
 	{
-		if (buff->flags && buff->flags->pos_neg && buff->s[0] != '-')
+		if (buff->flags & POS_NEG && buff->s[0] != '-')
 			buff->s = init_pos_neg(buff->s);
 	}
-	if (buff->flags && buff->flags->space &&
-		!buff->flags->pos_neg && !w && buff->s[0] != '-')
+	if (buff->flags & POS_NEG && buff->flags & SPACE && \
+	!w && buff->s[0] != '-')
 		buff->s = init_space(buff->s);
 }
 
@@ -42,7 +42,7 @@ void		make_flt_str(t_id *buff)
 	if ((buff->data.f || buff->data.u_lf) && !(buff->data.f == 0.000000 || \
 	buff->data.u_lf == 0.000000))
 	{
-		buff->s = (buff->len && buff->len->u_l) ? \
+		buff->s = (buff->len & UL_LEN) ? \
 		ft_ftoa(buff->data.u_lf, prcsn) : ft_ftoa(buff->data.f, prcsn);
 	}
 	else if (buff->data.f == 0.000000 || buff->data.u_lf == 0.000000)

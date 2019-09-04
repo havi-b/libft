@@ -6,7 +6,7 @@
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 20:47:10 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/06/23 10:59:24 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/05 18:46:21 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ char		*init_pos_neg(char *s)
 
 void		check_pos_neg(t_id *buff)
 {
-	if (isint_id(buff->id) && buff->flags &&
-	buff->flags->pos_neg && !(ft_strchr(buff->s, '+') \
-	|| ft_strchr(buff->s, '-')))
+	if (isint_id(buff->id) && buff->flags & POS_NEG && \
+	!(ft_strchr(buff->s, '+') || ft_strchr(buff->s, '-')))
 		buff->s = init_pos_neg(buff->s);
 }
 
@@ -37,7 +36,7 @@ void		init_padding(t_id *buff)
 
 	i = 0;
 	s = 0;
-	if (((buff->flags && buff->flags->pos_neg) || \
+	if (((buff->flags & POS_NEG) || \
 	((int)buff->data.data < 0 || buff->data.f < 0)) && \
 	(isint_id(buff->id) || isflt_id(buff->id)))
 	{
@@ -65,10 +64,10 @@ void		check_padding(t_id *buff)
 		init_padding(buff);
 	else if (ispntr_id(buff->id))
 		init_padding(buff);
-	else if (((!buff->size->prcsn || buff->size->prcsn < 0) \
+	else if (((buff->size->prcsn <= 0) \
 	|| ((intmax_t)buff->data.data < 0 && \
 	buff->size->prcsn + 1 == buff->size->width)) && \
 	!(isint_id(buff->id) && ft_strlen(buff->s) == (size_t)buff->size->width \
-	&& buff->s[0] != ' ' && buff->flags->pos_neg))
+	&& buff->s[0] != ' ' && buff->flags & POS_NEG))
 		init_padding(buff);
 }

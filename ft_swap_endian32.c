@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_swap_endian32.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 04:27:19 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/08/19 20:23:42 by hbhuiyan         ###   ########.fr       */
+/*   Created: 2019/08/30 02:43:25 by hbhuiyan          #+#    #+#             */
+/*   Updated: 2019/08/30 17:42:45 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
+uint32_t		ft_swap_endian32(uint32_t n)
 {
-	size_t	i;
-	char	*buff;
-
-	if (!s)
-		return (NULL);
-	if (!(buff = ft_strnew(ft_strlen(s))))
-		return (NULL);
-	i = 0;
-	while (s[i])
-	{
-		buff[i] = f(i, s[i]);
-		i++;
-	}
-	buff[i] = '\0';
-	return (buff);
+	return ((((n >> 24) & 0x000000ff) | \
+			((n >> 8) & 0x0000ff00) | \
+			((n << 8) & 0x00ff0000) | \
+			((n << 24) & 0xff000000)));
 }

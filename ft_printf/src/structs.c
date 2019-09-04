@@ -6,7 +6,7 @@
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 23:58:24 by havi              #+#    #+#             */
-/*   Updated: 2019/06/23 10:59:24 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/05 06:44:06 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ t_id		*new_node(void)
 	buff->n = 0;
 	buff->id = 0;
 	buff->space = NULL;
-	buff->flags = NULL;
+	buff->flags = 0;
 	buff->size = NULL;
-	buff->len = NULL;
+	buff->len = 0;
 	buff->next = NULL;
 	return (buff);
 }
@@ -72,12 +72,8 @@ void		free_list(t_id *buff)
 			free(buff->s);
 		if (buff->space)
 			free(buff->space);
-		if (buff->flags)
-			free(buff->flags);
 		if (buff->size)
 			free(buff->size);
-		if (buff->len)
-			free(buff->len);
 		free(buff);
 		buff = temp;
 	}

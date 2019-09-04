@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havi <havi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 16:02:24 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/07/12 11:55:44 by havi             ###   ########.fr       */
+/*   Updated: 2019/08/30 17:47:53 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,31 @@
 # include <stdarg.h>
 # include "../../libft.h"
 
+# define LEFT_JUST	1
+# define PADDING	2
+# define POS_NEG	4
+# define HASH		8
+# define SPACE		16
+
+# define H_LEN			1
+# define HH_LEN			2
+# define L_LEN			4
+# define LL_LEN			8
+# define J_LEN			16
+# define Z_LEN			32
+# define UL_LEN			64
+
 typedef union		u_data {
 	void			*data;
 	double			f;
 	long double		u_lf;
 }					t_data;
 
-typedef struct		s_flags {
-	char			left_just;
-	char			padding;
-	char			pos_neg;
-	char			hash;
-	char			space;
-}					t_flags;
-
 typedef struct		s_size {
 	int				width;
 	char			dot;
 	int				prcsn;
 }					t_size;
-
-typedef struct		s_len {
-	char			h;
-	char			hh;
-	char			l;
-	char			ll;
-	char			j;
-	char			z;
-	char			u_l;
-}					t_len;
 
 typedef struct		s_id {
 	struct s_id		*prev;
@@ -56,9 +52,9 @@ typedef struct		s_id {
 	int				n;
 	char			id;
 	char			*space;
-	t_flags			*flags;
+	char			flags;
 	t_size			*size;
-	t_len			*len;
+	char			len;
 	struct s_id		*next;
 }					t_id;
 
@@ -67,7 +63,7 @@ typedef struct		s_va {
 	int				va_index;
 	t_data			data;
 	char			id;
-	t_len			*len;
+	char			len;
 	struct s_va		*next;
 }					t_va;
 
@@ -78,9 +74,7 @@ t_id				*new_node(void);
 t_id				*add_node(t_id *buff);
 t_id				*first_node(t_id *buff);
 t_id				*goto_index(t_id *buff, int i);
-t_flags				*new_flags(void);
 t_size				*new_size(void);
-t_len				*new_len(void);
 void				free_list(t_id *buff);
 
 /*
@@ -100,14 +94,14 @@ t_id				*parse(const char *restrict format, va_list args, \
 t_id				*parse_arg_index(const char *restrict format, int *i, \
 					t_id *buff);
 int					find_va_index(t_id *buff);
-t_flags				*parse_flags(const char *restrict format, int *i);
+char				parse_flags(const char *restrict format, int *i);
 t_size				*parse_size(const char *restrict format, va_list args, \
 					int *i);
 void				parse_width(const char *restrict format, va_list args, \
 					int *i, t_size *size);
 void				parse_prcsn(const char *restrict format, va_list args, \
 					int *i, t_size *size);
-t_len				*parse_len(const char *restrict format, int *i);
+char				parse_len(const char *restrict format, int *i);
 t_id				*parse_id(const char *restrict format, va_list args, \
 					int *i, t_id *buff);
 t_id				*parse_string(const char *restrict format, int *i, \
@@ -143,14 +137,14 @@ void				init_pntr_format(t_id *buff);
 ** Handle 'd, D, i'
 */
 void				make_int_str(t_id *buff);
-char				*init_int_len(t_len *len, intmax_t i);
+char				*init_int_len(char len, intmax_t i);
 void				init_int_format(t_id *buff);
 
 /*
 ** Handle 'o, O, u, U, x, X'
 */
 void				make_uint_str(t_id *buff);
-char				*init_uint_len(t_len *len, void *n, int base, int upper);
+char				*init_uint_len(char len, void *n, int base, int upper);
 void				init_uint_format(t_id *buff);
 
 /*

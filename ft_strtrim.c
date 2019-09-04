@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbhuiyan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 01:15:01 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2018/11/13 01:15:02 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/19 20:23:42 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s)
+char	*ft_strtrim(const char *s)
 {
 	size_t	i;
 	char	*t;

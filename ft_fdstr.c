@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_fdstr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 04:27:19 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/08/19 20:23:42 by hbhuiyan         ###   ########.fr       */
+/*   Created: 2019/08/10 05:07:28 by hbhuiyan          #+#    #+#             */
+/*   Updated: 2019/08/30 17:40:27 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
+unsigned char		*ft_fdstr(const int fd, uint64_t *len)
 {
-	size_t	i;
-	char	*buff;
+	unsigned char	buf[BUFF_SIZE + 1];
+	unsigned char	*tmp;
+	unsigned char	*ret;
+	int				bytes;
 
-	if (!s)
+	tmp = NULL;
+	if (!(ret = (unsigned char *)malloc(sizeof(unsigned char))))
 		return (NULL);
-	if (!(buff = ft_strnew(ft_strlen(s))))
-		return (NULL);
-	i = 0;
-	while (s[i])
+	*len = 0;
+	while ((bytes = read(fd, buf, BUFF_SIZE)) > 0)
 	{
-		buff[i] = f(i, s[i]);
-		i++;
+		buf[bytes] = '\0';
+		tmp = ret;
+		ret = (unsigned char *)ft_strnjoin((char *)tmp, \
+		(char *)buf, *len, bytes);
+		free(tmp);
+		*len += bytes;
 	}
-	buff[i] = '\0';
-	return (buff);
+	return (ret);
 }

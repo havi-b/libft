@@ -6,7 +6,7 @@
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 20:05:37 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/06/23 10:59:24 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/05 05:50:24 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		copy_data(t_id *dst, t_id *src)
 {
 	if (isflt_id(dst->id) && isflt_id(dst->id))
 	{
-		if (dst->len && dst->len->u_l && dst->len && dst->len->u_l)
+		if (dst->len && dst->len & UL_LEN && dst->len && dst->len & UL_LEN)
 			dst->data.u_lf = (long double)src->data.u_lf;
 		else
 			dst->data.f = src->data.f;

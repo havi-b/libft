@@ -6,7 +6,7 @@
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 05:09:03 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/06/23 13:08:16 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/05 18:38:01 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ char		*init_space(char *s)
 
 void		check_space(t_id *buff)
 {
-	if (isint_id(buff->id) && buff->flags && buff->flags->space && \
-	!buff->flags->pos_neg && !(buff->size && buff->size->width) && \
+	if (isint_id(buff->id) && \
+	!(buff->flags & POS_NEG) && buff->flags & SPACE && \
+	!(buff->size && buff->size->width >= (int)ft_strlen(buff->s)) && \
 	buff->s[0] != '-')
 		buff->s = init_space(buff->s);
-	else if (buff->flags && buff->flags->space && buff->flags->padding \
-	&& buff->size && buff->size->width && buff->s[0] == '0')
+	else if (buff->flags & PADDING && buff->flags & SPACE && \
+	buff->size && buff->size->width && buff->s[0] == '0')
 		buff->s[0] = ' ';
 }

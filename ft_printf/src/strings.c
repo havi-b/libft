@@ -6,7 +6,7 @@
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 20:27:32 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/06/25 19:35:21 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/30 12:50:53 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,17 @@ void		init_str_format(t_id *buff)
 
 void		make_str_str(t_id *buff)
 {
+	int i;
+
+	i = 0;
 	if (buff->size && buff->size->dot && buff->size->prcsn == 0)
 		buff->s = ft_strjoin("\0", "");
 	else if (buff->data.data == NULL)
 		buff->s = ft_strjoin("(null)", "\0");
 	else
 		buff->s = ft_strjoin((char *)buff->data.data, "\0");
+	if (buff->id == 'S')
+		buff->s = ft_strupper(buff->s);
 	if (buff->s)
 		init_str_format(buff);
 }

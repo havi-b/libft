@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbhuiyan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 02:13:23 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2018/11/11 02:13:29 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/19 20:23:42 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+char	*ft_strmap(const char *s, char (*f)(char))
 {
 	size_t	i;
 	char	*buff;

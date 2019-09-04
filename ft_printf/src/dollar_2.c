@@ -6,7 +6,7 @@
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 23:43:09 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/06/23 10:59:24 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/05 18:40:26 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void		init_va_data(t_va *va, va_list args)
 	{
 		if (isflt_id(temp->id))
 		{
-			if (temp->len && temp->len->u_l)
+			if (temp->len & UL_LEN)
 				temp->data.u_lf = va_arg(args, long double);
 			else
 				temp->data.f = va_arg(args, double);
@@ -103,7 +103,8 @@ void		copy_va(t_id *buff, t_va *va)
 			tmp = goto_va(temp->dollar, tmp);
 			if (isflt_id(temp->id) && isflt_id(tmp->id))
 			{
-				if (temp->len && temp->len->u_l && tmp->len && tmp->len->u_l)
+				if (temp->len && temp->len & UL_LEN && \
+				tmp->len && tmp->len & UL_LEN)
 					temp->data.u_lf = (long double)tmp->data.u_lf;
 				else
 					temp->data.f = tmp->data.f;

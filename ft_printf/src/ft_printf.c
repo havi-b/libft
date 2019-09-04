@@ -6,7 +6,7 @@
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/24 16:03:24 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/06/23 10:57:08 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/05 05:26:23 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		print_char_str(t_id *buff)
 
 	l = (buff->space) ? buff->n - ft_strlen(buff->space) : buff->n;
 	if (buff->data.data == NULL && buff->size && buff->size->width && \
-	buff->flags && buff->flags->left_just)
+	buff->flags & LEFT_JUST)
 	{
 		ft_putchar('\0');
 		l--;

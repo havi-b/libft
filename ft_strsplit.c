@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbhuiyan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 20:21:01 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2018/11/13 20:21:03 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/19 20:23:42 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		**ft_strsplit(char const *s, char c)
+char		**ft_strsplit(const char *s, char c)
 {
 	char	**ret;
 	size_t	wrdcnt;

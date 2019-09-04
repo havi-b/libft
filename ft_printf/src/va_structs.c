@@ -6,7 +6,7 @@
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 23:41:21 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/06/23 10:59:24 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/05 05:58:01 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_va		*new_va(void)
 	va->va_index = 0;
 	va->data.data = NULL;
 	va->id = 0;
-	va->len = NULL;
+	va->len = 0;
 	va->next = NULL;
 	return (va);
 }
@@ -67,8 +67,6 @@ void		free_va(t_va *va)
 	while (va)
 	{
 		temp = va->next;
-		if (va->len)
-			va->len = NULL;
 		free(va);
 		va = temp;
 	}

@@ -6,7 +6,7 @@
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 00:08:29 by havi              #+#    #+#             */
-/*   Updated: 2019/06/23 10:59:24 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/05 05:57:23 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,10 @@ t_id		*parse(const char *restrict format, va_list args, int *i, \
 		buff = parse_arg_index(format, i, buff);
 	if (!buff->dollar && format[*i] != '%')
 		buff->va_index = find_va_index(buff);
-	buff->flags = (isflag(format[*i]) == 1) ? parse_flags(format, i) : NULL;
+	buff->flags = (isflag(format[*i]) == 1) ? parse_flags(format, i) : 0;
 	buff->size = ((ft_isdigit(format[*i]) == 1) || format[*i] == '.' || \
 	format[*i] == '*') ? parse_size(format, args, i) : NULL;
-	buff->len = (islen(format[*i]) == 1) ? parse_len(format, i) : NULL;
+	buff->len = (islen(format[*i]) == 1) ? parse_len(format, i) : 0;
 	if (is_id(format[*i]))
 		buff = parse_id(format, args, i, buff);
 	else

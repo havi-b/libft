@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_printbits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 04:27:19 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/08/19 20:23:42 by hbhuiyan         ###   ########.fr       */
+/*   Created: 2019/08/16 22:01:20 by hbhuiyan          #+#    #+#             */
+/*   Updated: 2019/08/30 17:45:23 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
+void		print_bits(unsigned char octet)
 {
-	size_t	i;
-	char	*buff;
+	int		i;
 
-	if (!s)
-		return (NULL);
-	if (!(buff = ft_strnew(ft_strlen(s))))
-		return (NULL);
-	i = 0;
-	while (s[i])
+	i = 8;
+	while (i > 0)
 	{
-		buff[i] = f(i, s[i]);
-		i++;
+		(octet & 128) ? write(1, "1", 1) : write(1, "0", 1);
+		octet <<= 1;
+		i--;
 	}
-	buff[i] = '\0';
-	return (buff);
 }

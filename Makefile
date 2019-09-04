@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: havi <havi@student.42.fr>                  +#+  +:+       +#+         #
+#    By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/28 23:38:04 by hbhuiyan          #+#    #+#              #
-#    Updated: 2019/07/12 12:22:34 by havi             ###   ########.fr        #
+#    Updated: 2019/08/12 21:40:01 by hbhuiyan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJECTS = *.o
 FLAGS = -Wall -Wextra -Werror
 
 $(NAME): $(SRC)/%.o
-	@gcc $(FLAGS) -c $(SRC) -I $(INCLUDES)
+	@gcc -g $(FLAGS) -c $(SRC) -I $(INCLUDES)
 	@ar rc $(NAME) $(OBJECTS)
 	@ranlib $(NAME)
 

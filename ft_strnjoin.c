@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_strnjoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 04:27:19 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/08/19 20:23:42 by hbhuiyan         ###   ########.fr       */
+/*   Created: 2019/08/19 20:06:13 by hbhuiyan          #+#    #+#             */
+/*   Updated: 2019/08/30 17:51:01 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
+char		*ft_strnjoin(const char *s1, const char *s2, \
+				size_t s1_l, size_t s2_l)
 {
-	size_t	i;
-	char	*buff;
+	char	*ret;
 
-	if (!s)
+	if (!(ret = (char *)malloc(sizeof(char) * (s1_l + s2_l))))
 		return (NULL);
-	if (!(buff = ft_strnew(ft_strlen(s))))
-		return (NULL);
-	i = 0;
-	while (s[i])
-	{
-		buff[i] = f(i, s[i]);
-		i++;
-	}
-	buff[i] = '\0';
-	return (buff);
+	ft_strncpy_u(ret, s1, s1_l);
+	ft_strncpy_u((ret + s1_l), s2, s2_l);
+	return (ret);
 }

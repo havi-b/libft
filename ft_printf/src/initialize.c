@@ -6,7 +6,7 @@
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 00:10:13 by havi              #+#    #+#             */
-/*   Updated: 2019/06/23 10:59:24 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/30 12:30:26 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		route(t_id *buff)
 		make_flt_str(buff);
 	else if (buff->id == 'c')
 		make_char_str(buff);
-	else if (buff->id == 's')
+	else if (buff->id == 's' || buff->id == 'S')
 		make_str_str(buff);
 	else if (ispntr_id(buff->id))
 		make_pntr_str(buff);

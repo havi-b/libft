@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_swap_endian64.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 04:27:19 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/08/19 20:23:42 by hbhuiyan         ###   ########.fr       */
+/*   Created: 2019/08/30 02:46:57 by hbhuiyan          #+#    #+#             */
+/*   Updated: 2019/08/30 17:34:29 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
+uint64_t		ft_swap_endian64(uint64_t n)
 {
-	size_t	i;
-	char	*buff;
-
-	if (!s)
-		return (NULL);
-	if (!(buff = ft_strnew(ft_strlen(s))))
-		return (NULL);
-	i = 0;
-	while (s[i])
-	{
-		buff[i] = f(i, s[i]);
-		i++;
-	}
-	buff[i] = '\0';
-	return (buff);
+	return (((n << 56) | \
+			((n & 0x000000000000FF00) << 40) | \
+			((n & 0x0000000000FF0000) << 24) | \
+			((n & 0x00000000FF000000) << 8) | \
+			((n & 0x000000FF00000000) >> 8) | \
+			((n & 0x0000FF0000000000) >> 24) | \
+			((n & 0x00FF000000000000) >> 40) | \
+			(n >> 56)));
 }

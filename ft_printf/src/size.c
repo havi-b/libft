@@ -6,7 +6,7 @@
 /*   By: hbhuiyan <hbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 21:11:49 by hbhuiyan          #+#    #+#             */
-/*   Updated: 2019/06/23 10:59:24 by hbhuiyan         ###   ########.fr       */
+/*   Updated: 2019/08/05 06:37:29 by hbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		init_width(t_id *buff)
 
 	i = 0;
 	if (((isint_id(buff->id) && !buff->size->prcsn) || isflt_id(buff->id)) &&
-	buff->flags && buff->flags->pos_neg && buff->s[0] != '-')
+	buff->flags & POS_NEG && buff->s[0] != '-')
 		buff->s = init_pos_neg(buff->s);
 	if (isuint_id(buff->id) || ispntr_id(buff->id))
 		check_hash(buff);
@@ -32,9 +32,9 @@ void		init_width(t_id *buff)
 	while (i < l)
 		s[i++] = ' ';
 	s[i] = '\0';
-	buff->s = (buff->flags && buff->flags->left_just) ? ft_strjoin(temp, s) : \
+	buff->s = (buff->flags & LEFT_JUST) ? ft_strjoin(temp, s) : \
 	ft_strjoin(s, temp);
-	if (buff->flags && buff->flags->padding && !buff->flags->left_just)
+	if (buff->flags & PADDING && !(buff->flags & LEFT_JUST))
 		check_padding(buff);
 	free(temp);
 	free(s);
@@ -60,7 +60,7 @@ void		init_prcsn(t_id *buff)
 	buff->s = (temp[0] == '-') ? ft_strjoin(s, &temp[1]) : ft_strjoin(s, temp);
 	free(temp);
 	free(s);
-	if (buff->flags && buff->flags->pos_neg && isint_id(buff->id) &&
+	if (buff->flags & POS_NEG && isint_id(buff->id) &&
 		buff->s[0] != '-')
 		buff->s = init_pos_neg(buff->s);
 	else if ((is_valid_hash(buff) && (intmax_t)buff->data.data > 0) && \
@@ -71,8 +71,6 @@ void		init_prcsn(t_id *buff)
 
 void		fix_width(t_id *buff)
 {
-	if (!buff->flags)
-		buff->flags = new_flags();
-	buff->flags->left_just = 1;
+	buff->flags |= LEFT_JUST;
 	buff->size->width *= -1;
 }
